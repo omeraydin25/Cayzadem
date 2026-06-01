@@ -13,9 +13,9 @@
  :root {
  --primary-color: #d4a373; /* Altın kahve */
  --secondary-color: #faedcd; /* Krem */
- --card-bg: rgba(20, 15, 10, 0.85); /* Koyu kahve/ahşap tonu */
+ --card-bg: rgba(25, 18, 12, 0.9); /* Daha koyu, ahşap tonu */
  --text-color: #f5f5f5;
- --security-green: #2ecc71; /* Güvenlik yeşili */
+ --security-green: #2ecc71;
  }
 
  * {
@@ -26,7 +26,11 @@
 
  body {
  font-family: 'Poppins', sans-serif;
- background: linear-gradient(rgba(0,0,0,0.4), rgba(20, 10, 5, 0.9));
+ /* YENİ ARKA PLAN: Erzurum manzarası + sıcak kahve tonları */
+ background: linear-gradient(rgba(10, 5, 2, 0.7), rgba(20, 10, 5, 0.9)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
+ background-size: cover;
+ background-position: center;
+ background-attachment: fixed;
  color: var(--text-color);
  line-height: 1.6;
  overflow-x: hidden;
@@ -39,7 +43,7 @@
 
  /* --- Header --- */
  header {
- background: rgba(10, 5, 0, 0.95);
+ background: rgba(5, 2, 0, 0.97); /* Çok koyu, neredeyse siyah */
  padding: 15px 5%;
  position: fixed;
  width: 100%;
@@ -48,9 +52,10 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- border-bottom: 1px solid #5c4033;
- backdrop-filter: blur(10px);
+ border-bottom: 1px solid #6d4c41; /* Ahşap rengi */
+ backdrop-filter: blur(15px);
  transition: all 0.3s ease;
+ box-shadow: 0 4px 20px rgba(0,0,0,0.6);
  }
 
  .logo-container {
@@ -65,7 +70,7 @@
  font-weight: 700;
  letter-spacing: 2px;
  color: #fff;
- text-shadow: 0 0 15px rgba(212, 163, 115, 0.8);
+ text-shadow: 0 0 20px rgba(212, 163, 115, 0.9);
  font-family: 'Playfair Display', serif;
  }
 
@@ -79,18 +84,35 @@
  text-decoration: none;
  color: var(--secondary-color);
  font-weight: 500;
- transition: color 0.3s;
+ transition: all 0.3s;
  font-size: 1rem;
+ position: relative;
  }
 
  nav a:hover {
  color: var(--primary-color);
  }
 
+ nav a::after {
+ content: '';
+ position: absolute;
+ bottom: -5px;
+ left: 0;
+ width: 0;
+ height: 2px;
+ background: var(--primary-color);
+ transition: width 0.3s;
+ }
+
+ nav a:hover::after {
+ width: 100%;
+ }
+
  /* --- Hero Section --- */
  .hero {
  height: 100vh;
- background: linear-gradient(rgba(20, 10, 5, 0.5), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
+ /* Arka plan aynı kaldı, sadece overlay hafifletildi */
+ background: linear-gradient(rgba(15, 8, 3, 0.4), rgba(5, 2, 0, 0.7)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
  background-attachment: fixed;
@@ -106,11 +128,12 @@
  .hero h1 {
  font-size: 6rem;
  margin-bottom: 20px;
- text-shadow: 2px 2px 20px rgba(0,0,0,1), 0 0 30px rgba(212, 163, 115, 0.7);
+ text-shadow: 2px 2px 25px rgba(0,0,0,1), 0 0 40px rgba(212, 163, 115, 0.8);
  animation: fadeInDown 1s ease-out;
  letter-spacing: 5px;
  color: #fff;
  font-family: 'Playfair Display', serif;
+ text-transform: uppercase;
  }
 
  .hero p {
@@ -120,12 +143,13 @@
  color: var(--secondary-color);
  animation: fadeInUp 1s ease-out 0.3s backwards;
  font-weight: 300;
- text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+ text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+ line-height: 1.8;
  }
 
  .cta-btn {
  padding: 20px 60px;
- background: var(--primary-color);
+ background: linear-gradient(135deg, var(--primary-color), #b58556);
  color: #fff;
  border: none;
  border-radius: 50px;
@@ -133,23 +157,25 @@
  font-weight: 600;
  cursor: pointer;
  text-decoration: none;
- transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+ transition: all 0.3s;
  animation: fadeInUp 1s ease-out 0.6s backwards;
- box-shadow: 0 4px 30px rgba(212, 163, 115, 0.6);
+ box-shadow: 0 8px 35px rgba(212, 163, 115, 0.5);
  text-transform: uppercase;
  letter-spacing: 2px;
+ border: 1px solid rgba(255,255,255,0.2);
  }
 
  .cta-btn:hover {
  transform: translateY(-5px);
- background: #b58556;
- box-shadow: 0 8px 35px rgba(212, 163, 115, 0.8);
+ box-shadow: 0 12px 45px rgba(212, 163, 115, 0.7);
+ background: linear-gradient(135deg, #b58556, #966a43);
  }
 
  /* --- Features Section --- */
  .features {
  padding: 100px 5%;
- background: linear-gradient(to bottom, #1a1a1a, #0f0a05);
+ /* Koyu kahve geçişi */
+ background: linear-gradient(to bottom, #1a1510, #0d0805);
  }
 
  .section-title {
@@ -161,11 +187,11 @@
  font-size: 3.5rem;
  margin-bottom: 15px;
  color: var(--primary-color);
- text-shadow: 0 0 15px rgba(212, 163, 115, 0.4);
+ text-shadow: 0 0 20px rgba(212, 163, 115, 0.5);
  }
 
  .section-title p {
- color: #aaa;
+ color: #ccc;
  font-size: 1.2rem;
  max-width: 600px;
  margin: 0 auto;
@@ -184,18 +210,19 @@
  background: var(--card-bg);
  border-radius: 20px;
  overflow: hidden;
- transition: transform 0.4s, box-shadow 0.4s;
- border: 1px solid rgba(212, 163, 115, 0.3);
+ transition: all 0.4s;
+ border: 1px solid rgba(212, 163, 115, 0.2);
  position: relative;
  display: flex;
  flex-direction: column;
  height: 100%;
- backdrop-filter: blur(5px);
+ backdrop-filter: blur(10px);
+ box-shadow: 0 10px 30px rgba(0,0,0,0.5);
  }
 
  .card:hover {
- transform: translateY(-10px);
- box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 25px rgba(212, 163, 115, 0.4);
+ transform: translateY(-10px) scale(1.02);
+ box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 163, 115, 0.3);
  border-color: var(--primary-color);
  }
 
@@ -210,11 +237,11 @@
  width: 100%;
  height: 100%;
  object-fit: cover;
- transition: transform 0.5s;
+ transition: transform 0.7s;
  }
 
  .card:hover .card-img {
- transform: scale(1.1);
+ transform: scale(1.15);
  }
 
  .card-content {
@@ -231,6 +258,7 @@
  color: var(--primary-color);
  margin-bottom: 20px;
  display: block;
+ filter: drop-shadow(0 0 10px rgba(212, 163, 115, 0.5));
  }
 
  .card h3 {
@@ -240,7 +268,7 @@
  }
 
  .card p {
- color: #ccc;
+ color: #ddd;
  font-size: 1.1rem;
  line-height: 1.7;
  }
@@ -248,7 +276,7 @@
  /* --- Info Section --- */
  .info-section {
  padding: 100px 5%;
- background: linear-gradient(to bottom, #0f0a05, #050200);
+ background: linear-gradient(to bottom, #0d0805, #050200);
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
@@ -267,7 +295,7 @@
  font-size: 2.8rem;
  margin-bottom: 40px;
  color: var(--primary-color);
- text-shadow: 0 0 10px rgba(212, 163, 115, 0.3);
+ text-shadow: 0 0 15px rgba(212, 163, 115, 0.4);
  }
 
  .info-item {
@@ -276,14 +304,15 @@
  justify-content: center;
  margin-bottom: 30px;
  padding: 20px;
- background: rgba(255,255,255,0.05);
+ background: rgba(255,255,255,0.03);
  border-radius: 15px;
  border-left: 4px solid var(--primary-color);
- transition: background 0.3s;
+ transition: all 0.3s;
  }
 
  .info-item:hover {
- background: rgba(255,255,255,0.08);
+ background: rgba(255,255,255,0.06);
+ transform: translateX(5px);
  }
 
  .info-item i {
@@ -312,21 +341,22 @@
  font-weight: 700;
  text-decoration: none;
  font-size: 1.4rem;
- transition: color 0.3s;
+ transition: all 0.3s;
  }
 
  .phone-link:hover {
  color: #fff;
  text-decoration: underline;
+ text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
  }
 
- /* --- Footer & GELİŞMİŞ GÜVENLİK UYARISI --- */
+ /* --- Footer & GÜZEL GÜVENLİK UYARISI --- */
  footer {
  background: #050200;
  text-align: center;
  padding: 40px;
- border-top: 1px solid #5c4033;
- color: #777;
+ border-top: 1px solid #6d4c41;
+ color: #888;
  font-size: 0.95rem;
  position: relative;
  overflow: hidden;
@@ -336,48 +366,47 @@
  color: var(--primary-color);
  }
 
- /* YENİ TASARIM: Şık Güvenlik Çubuğu */
  .security-banner {
  position: absolute;
  bottom: 0;
  left: 0;
  width: 100%;
- background: rgba(15, 25, 15, 0.95); /* Çok koyu yeşil-siyah */
- border-top: 1px solid var(--security-green);
- padding: 12px 0;
+ background: rgba(10, 20, 10, 0.98);
+ border-top: 2px solid var(--security-green);
+ padding: 15px 0;
  display: flex;
  justify-content: center;
  align-items: center;
- gap: 12px;
+ gap: 15px;
  font-size: 0.95rem;
  font-weight: 600;
- color: #e0f7e8;
- backdrop-filter: blur(5px);
- box-shadow: 0 -2px 10px rgba(46, 204, 113, 0.2);
+ color: #e8f5e9;
+ backdrop-filter: blur(10px);
+ box-shadow: 0 -5px 20px rgba(46, 204, 113, 0.3);
  }
 
  .security-status {
  display: flex;
  align-items: center;
- gap: 8px;
- background: rgba(46, 204, 113, 0.15);
- padding: 4px 12px;
- border-radius: 20px;
- border: 1px solid rgba(46, 204, 113, 0.3);
+ gap: 10px;
+ background: rgba(46, 204, 113, 0.2);
+ padding: 6px 15px;
+ border-radius: 25px;
+ border: 1px solid rgba(46, 204, 113, 0.4);
  }
 
  .rec-dot {
- width: 8px;
- height: 8px;
+ width: 10px;
+ height: 10px;
  background: #ff3b30;
  border-radius: 50%;
  animation: pulse-red 1.5s infinite;
- box-shadow: 0 0 8px #ff3b30;
+ box-shadow: 0 0 10px #ff3b30;
  }
 
  @keyframes pulse-red {
  0% { opacity: 1; transform: scale(1); }
- 50% { opacity: 0.5; transform: scale(1.2); }
+ 50% { opacity: 0.4; transform: scale(1.3); }
  100% { opacity: 1; transform: scale(1); }
  }
 
@@ -389,11 +418,11 @@
 
  /* Animasyonlar */
  @keyframes fadeInDown {
- from { opacity: 0; transform: translateY(-40px); }
+ from { opacity: 0; transform: translateY(-50px); }
  to { opacity: 1; transform: translateY(0); }
  }
  @keyframes fadeInUp {
- from { opacity: 0; transform: translateY(40px); }
+ from { opacity: 0; transform: translateY(50px); }
  to { opacity: 1; transform: translateY(0); }
  }
 
@@ -406,7 +435,7 @@
  .section-title h2 { font-size: 2.5rem; }
  .info-item { flex-direction: column; text-align: center; }
  .info-item i { margin-right: 0; margin-bottom: 15px; }
- .security-banner { flex-direction: column; gap: 8px; padding: 15px 0; }
+ .security-banner { flex-direction: column; gap: 10px; padding: 15px 0; }
  .security-status { font-size: 0.85rem; }
  }
  </style>
@@ -466,15 +495,15 @@
  </div>
  </div>
 
- <!-- Tost & Yemek Kartı -->
+ <!-- Tost & Kahve (Posta) Kartı -->
  <div class="card">
  <div class="card-img-container">
- <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop" alt="Tost ve Yemekler" class="card-img">
+ <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop" alt="Tost ve Kahve" class="card-img">
  </div>
  <div class="card-content">
  <i class="fas fa-burger card-icon"></i>
- <h3>Tost & Lezzetli Yemekler</h3>
- <p>Sıcacık tostlar, özel soslu sandviçler ve günlük menümüzdeki sıcak yemeklerle mideniz de doysun.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Her saat taze, her lokma lezzetli!</strong></p>
+ <h3>Tost & Kahve (Posta)</h3>
+ <p>Sıcacık tostlar, taze demlenmiş posta ve günlük menümüzdeki sıcak yemeklerle mideniz de doysun.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Her saat taze, her lokma lezzetli!</strong></p>
  </div>
  </div>
 
@@ -529,7 +558,7 @@
  <p>&copy; 2026 <span>Cayzadem</span>. Tüm hakları saklıdır. | Erzurum'un En Sıcak Mekanı</p>
  <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">Sürekli canlı, sürekli dolu, sürekli keyif.</p>
  
- <!-- YENİ VE GÜZELLEŞTİRİLMİŞ GÜVENLİK UYARISI -->
+ <!-- GÜVENLİK UYARISI -->
  <div class="security-banner">
  <div class="security-status">
  <div class="rec-dot"></div>
@@ -545,12 +574,12 @@
  const header = document.querySelector('header');
  if (window.scrollY > 50) {
  header.style.padding = '10px 5%';
- header.style.background = 'rgba(10, 5, 0, 0.98)';
- header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+ header.style.background = 'rgba(5, 2, 0, 0.98)';
+ header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.7)';
  } else {
  header.style.padding = '15px 5%';
- header.style.background = 'rgba(10, 5, 0, 0.95)';
- header.style.boxShadow = 'none';
+ header.style.background = 'rgba(5, 2, 0, 0.97)';
+ header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.6)';
  }
  });
 
