@@ -77,7 +77,7 @@
  font-family: 'Playfair Display', serif;
  }
 
- /* SOL TARAFTAKİ İKONLAR */
+ /* SOL TARAFTAKİ İKONLAR (SADECE INSTAGRAM) */
  .header-icons {
  display: flex;
  align-items: center;
@@ -96,6 +96,7 @@
  color: var(--secondary-color);
  }
 
+ /* SADECE INSTAGRAM İKONU */
  .insta-link {
  font-size: 1.8rem;
  color: var(--primary-color);
@@ -303,7 +304,7 @@
  line-height: 1.7;
  }
 
- /* --- Müşteri Yorumları Bölümü (YENİ EKLENDİ) --- */
+ /* --- Müşteri Yorumları Bölümü (GERÇEK KULLANICI YORUMLARI) --- */
  .reviews-section {
  padding: 100px 5%;
  background: linear-gradient(to bottom, #0d0805, #050200);
@@ -454,7 +455,7 @@
  color: var(--security-green);
  }
 
- /* YORUM YAZMA FORMU */
+ /* YORUM YAZMA FORMU (MODAL GÖRÜNÜMÜ) */
  .write-review-section {
  background: var(--card-bg);
  border-radius: 20px;
@@ -463,6 +464,13 @@
  backdrop-filter: blur(10px);
  max-width: 800px;
  margin: 0 auto;
+ display: none; /* Başlangıçta gizli */
+ animation: slideDown 0.3s ease-out;
+ }
+
+ @keyframes slideDown {
+ from { opacity: 0; transform: translateY(-20px); }
+ to { opacity: 1; transform: translateY(0); }
  }
 
  .write-review-section h3 {
@@ -559,6 +567,31 @@
  opacity: 0.5;
  cursor: not-allowed;
  transform: none;
+ }
+
+ /* YORUM YAP BUTONU */
+ .open-review-btn {
+ display: inline-block;
+ padding: 15px 40px;
+ background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+ color: #fff;
+ border: none;
+ border-radius: 50px;
+ font-size: 1.2rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.3s;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ box-shadow: 0 8px 25px rgba(212, 163, 115, 0.4);
+ margin-top: 20px;
+ position: relative;
+ z-index: 100;
+ }
+
+ .open-review-btn:hover {
+ transform: translateY(-3px);
+ box-shadow: 0 12px 35px rgba(212, 163, 115, 0.6);
  }
 
  /* --- Info Section --- */
@@ -665,7 +698,7 @@
  text-shadow: 0 0 10px rgba(212, 163, 115, 0.8);
  }
 
- /* --- Footer & GÜZEL GÜVENLİK UYARISI & YENİ ANA BAŞLIK --- */
+ /* --- Footer & GÜZEL GÜVENLİK UYARISI & TELİF HAKKI --- */
  footer {
  background: #050200;
  text-align: center;
@@ -824,6 +857,7 @@
  .security-banner { flex-direction: column; gap: 10px; padding: 15px 0; }
  .security-status { font-size: 0.85rem; }
  .write-review-section { padding: 30px 20px; }
+ .open-review-btn { width: 100%; text-align: center; }
  }
  </style>
 </head>
@@ -835,15 +869,15 @@
  <div class="brand-name">CAYZADEM</div>
  </div>
  
- <!-- SOL TARAFTAKİ İKONLAR -->
+ <!-- SOL TARAFTAKİ İKONLAR (SADECE INSTAGRAM + MENÜ BUTONU) -->
  <div class="header-icons">
- <!-- HAMBURGER MENÜ BUTONU -->
+ <!-- HAMBURGER MENÜ BUTONU (3 ÇİZGİ) -->
  <div class="menu-toggle" onclick="toggleMenu()">
  <i class="fas fa-bars"></i>
  </div>
  
- <!-- INSTAGRAM İKONU -->
- <a href="https://www.instagram.com/abdulkadirbayrakdar__?igsh=MWxpbnYwbXk4M3F1eg==" target="_blank" class="insta-link" title="Instagram'da Takip Et">
+ <!-- SADECE INSTAGRAM İKONU -->
+ <a href="https://www.instagram.com/abdulkadirbayrakdar__?igsh=MWxpbnYwbXk4M3F1eg==" target="_blank" class="insta-link" title="Instagram">
  <i class="fab fa-instagram"></i>
  </a>
  </div>
@@ -919,33 +953,38 @@
  </div>
  </section>
 
- <!-- MÜŞTERİ YORUMLARI BÖLÜMÜ (YENİ EKLENDİ) -->
+ <!-- MÜŞTERİ YORUMLARI BÖLÜMÜ (GERÇEK KULLANICI YORUMLARI) -->
  <section id="reviews" class="reviews-section">
  <div class="reviews-container">
  <div class="reviews-header">
  <h2>Müşteri Yorumları</h2>
- <p style="color: var(--text-muted); font-size: 1.3rem; margin-top: 10px;">Bize olan güveniniz için teşekkür ederiz</p>
+ <p style="color: var(--text-muted); font-size: 1.3rem; margin-top: 10px;">Sizden gelen geri bildirimler bizim için çok değerli</p>
  
  <div class="overall-rating">
- <div class="rating-number" id="overall-rating">4.8</div>
+ <div class="rating-number" id="overall-rating">0.0</div>
  <div class="rating-stars" id="overall-stars">
- <i class="fas fa-star"></i>
- <i class="fas fa-star"></i>
- <i class="fas fa-star"></i>
- <i class="fas fa-star"></i>
- <i class="fas fa-star-half-alt"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
  </div>
- <div class="rating-count" id="rating-count">(127 yorum)</div>
+ <div class="rating-count" id="rating-count">(0 yorum)</div>
  </div>
+ 
+ <!-- YORUM YAP BUTONU -->
+ <button class="open-review-btn" onclick="toggleReviewForm()">
+ <i class="fas fa-pen"></i> Yorum Yap
+ </button>
  </div>
 
- <!-- Yorumlar Grid -->
+ <!-- Yorumlar Grid (Boş Başlayacak) -->
  <div class="reviews-grid" id="reviews-grid">
- <!-- Yorum kartları JavaScript ile eklenecek -->
+ <!-- Yorumlar JavaScript ile buraya eklenecek -->
  </div>
 
- <!-- Yorum Yazma Formu -->
- <div class="write-review-section">
+ <!-- YORUM YAZMA FORMU (GİZLİ BAŞLAYACAK) -->
+ <div class="write-review-section" id="review-form-container">
  <h3>Kendi Yorumunuzu Yazın</h3>
  <form id="review-form" onsubmit="submitReview(event)">
  <div class="rating-input">
@@ -1017,12 +1056,13 @@
  </div>
  </section>
 
- <!-- Footer (YENİ ANA BAŞLIK VE TELİF HAKKI) -->
+ <!-- Footer (YENİ ANA BAŞLIK VE TELİF HAKKI - CAYZADEM EKLENDİ) -->
  <footer>
  <!-- YENİ ANA BAŞLIK -->
  <div class="footer-main-title">ÇAYIN VE MUHABBETİN ADRESİ</div>
  <div class="footer-slogan">Sürekli canlı, sürekli dolu, sürekli keyif</div>
  
+ <!-- TELİF HAKKI - CAYZADEM EKLENDİ -->
  <p>&copy; 2026 <span>Cayzadem</span>. Tüm hakları saklıdır. | Erzurum'un En Sıcak Mekanı</p>
  
  <!-- GÜVENLİK UYARISI -->
@@ -1065,7 +1105,7 @@
  });
  });
 
- // Mobil Menü Aç/Kapa
+ // Mobil Menü Aç/Kapa (3 ÇİZGİ BUTONU)
  function toggleMenu() {
  const nav = document.getElementById('nav-menu');
  if (window.innerWidth <= 768) {
@@ -1073,71 +1113,25 @@
  }
  }
 
- // --- MÜŞTERİ YORUMLARI SİSTEMİ ---
- 
- // Örnek yorumlar
- let reviews = [
- {
- id: 1,
- name: "Ahmet Yılmaz",
- avatar: "AY",
- date: "2 gün önce",
- rating: 5,
- text: "Harika bir mekan! Nargile kalitesi mükemmel, çaylar taze ve personelin ilgisi çok iyi. Süper Lig maçlarını burada takip etmek ayrı bir keyif. Kesinlikle tavsiye ederim.",
- likes: 24,
- liked: false
- },
- {
- id: 2,
- name: "Elif Demir",
- avatar: "ED",
- date: "5 gün önce",
- rating: 5,
- text: "Erzurum'da bulabileceğiniz en kaliteli nargile ve çay deneyimi. Atmosfer çok sıcak ve samimi. Tostları da harika! Her hafta buradayız.",
- likes: 18,
- liked: false
- },
- {
- id: 3,
- name: "Mehmet Kaya",
- avatar: "MK",
- date: "1 hafta önce",
- rating: 4,
- text: "Genel olarak çok memnun kaldım. Nargileler güzel, içecekler taze. Sadece yoğun saatlerde biraz beklemek gerekiyor ama değer.",
- likes: 12,
- liked: false
- },
- {
- id: 4,
- name: "Ayşe Şahin",
- avatar: "AS",
- date: "1 hafta önce",
- rating: 5,
- text: "Arkadaşlarla akşam yemeği için geldik. Hem lezzetli yemek hem de harika atmosfer. Personel çok ilgili ve güleryüzlü. Kesinlikle tekrar geleceğiz!",
- likes: 31,
- liked: false
- },
- {
- id: 5,
- name: "Burak Öztürk",
- avatar: "BO",
- date: "2 hafta önce",
- rating: 5,
- text: "Derbi gecelerinde buraya gelmek ayrı bir heyecan. Büyük ekrandan maçı izlerken nargile içmek inanılmaz bir deneyim. Her futbolseverin denemesi lazım.",
- likes: 45,
- liked: false
- },
- {
- id: 6,
- name: "Zeynep Arslan",
- avatar: "ZA",
- date: "2 hafta önce",
- rating: 4,
- text: "Çok şık bir mekan. Çay çeşitleri zengin, tostlar lezzetli. Biraz daha sessiz bir köşe olsaydı daha da güzeldi ama genel olarak çok iyi.",
- likes: 9,
- liked: false
+ // --- YORUM FORMU AÇMA/KAPAMA ---
+ function toggleReviewForm() {
+ const formContainer = document.getElementById('review-form-container');
+ if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+ formContainer.style.display = 'block';
+ // Formun en başına kaydır
+ formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ } else {
+ formContainer.style.display = 'none';
  }
- ];
+ }
+
+ // --- GERÇEK KULLANICI YORUMLARI SİSTEMİ ---
+ 
+ // Tarayıcı yerel depolamasından (localStorage) yorumları al
+ function getReviewsFromStorage() {
+ const storedReviews = localStorage.getItem('cayzadem_reviews');
+ return storedReviews ? JSON.parse(storedReviews) : ;
+ }
 
  // Yıldız seçimi
  function selectRating(rating) {
@@ -1169,9 +1163,12 @@
  return;
  }
  
+ // Mevcut yorumları al
+ let reviews = getReviewsFromStorage();
+ 
  // Yeni yorum oluştur
  const newReview = {
- id: reviews.length + 1,
+ id: Date.now(), // Benzersiz ID
  name: name,
  avatar: name.split(' ').map(n => n).join('').toUpperCase(),
  date: "Şimdi",
@@ -1184,6 +1181,9 @@
  // Yorum listesine ekle
  reviews.unshift(newReview);
  
+ // Yerel depolamaya kaydet
+ localStorage.setItem('cayzadem_reviews', JSON.stringify(reviews));
+ 
  // Yorumları yeniden yükle
  loadReviews();
  
@@ -1195,16 +1195,21 @@
  star.querySelector('i').classList.add('far');
  });
  
+ // Formu kapat
+ toggleReviewForm();
+ 
  // Başarı mesajı
  alert('Yorumunuz başarıyla gönderildi! Teşekkür ederiz.');
  }
 
  // Beğeni işlevi
  function toggleLike(reviewId) {
+ let reviews = getReviewsFromStorage();
  const review = reviews.find(r => r.id === reviewId);
  if (review) {
  review.liked = !review.liked;
  review.likes = review.liked ? review.likes + 1 : review.likes - 1;
+ localStorage.setItem('cayzadem_reviews', JSON.stringify(reviews));
  loadReviews();
  updateOverallRating();
  }
@@ -1212,6 +1217,20 @@
 
  // Ortalama puan güncelleme
  function updateOverallRating() {
+ const reviews = getReviewsFromStorage();
+ if (reviews.length === 0) {
+ document.getElementById('overall-rating').textContent = "0.0";
+ document.getElementById('rating-count').textContent = "(0 yorum)";
+ document.getElementById('overall-stars').innerHTML = `
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ <i class="far fa-star"></i>
+ `;
+ return;
+ }
+ 
  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
  const average = totalRating / reviews.length;
  const rounded = Math.round(average * 2) / 2;
