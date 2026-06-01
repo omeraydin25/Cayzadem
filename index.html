@@ -13,8 +13,11 @@
  :root {
  --primary-color: #d4a373; /* Altın kahve */
  --secondary-color: #faedcd; /* Krem */
- --card-bg: rgba(25, 18, 12, 0.9); /* Daha koyu, ahşap tonu */
- --text-color: #f5f5f5;
+ --accent-color: #b58556; /* Daha koyu altın */
+ --card-bg: rgba(20, 15, 10, 0.95); /* Daha koyu, daha profesyonel arka plan */
+ --text-primary: #ffffff; /* Ana yazı rengi (beyaz) */
+ --text-secondary: #e0d8c8; /* İkincil yazı rengi (krem tonu) */
+ --text-muted: #b8a996; /* Soluk metinler için */
  --security-green: #2ecc71;
  }
 
@@ -26,11 +29,11 @@
 
  body {
  font-family: 'Poppins', sans-serif;
- background: linear-gradient(rgba(10, 5, 2, 0.7), rgba(20, 10, 5, 0.9)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
+ background: linear-gradient(rgba(5, 3, 1, 0.85), rgba(15, 10, 5, 0.9)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
  background-attachment: fixed;
- color: var(--text-color);
+ color: var(--text-primary);
  line-height: 1.6;
  overflow-x: hidden;
  }
@@ -42,7 +45,7 @@
 
  /* --- Header --- */
  header {
- background: rgba(5, 2, 0, 0.97);
+ background: rgba(10, 5, 2, 0.98);
  padding: 15px 5%;
  position: fixed;
  width: 100%;
@@ -51,10 +54,10 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- border-bottom: 1px solid #6d4c41;
+ border-bottom: 1px solid rgba(212, 163, 115, 0.3);
  backdrop-filter: blur(15px);
  transition: all 0.3s ease;
- box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+ box-shadow: 0 4px 20px rgba(0,0,0,0.8);
  }
 
  .logo-container {
@@ -69,11 +72,17 @@
  font-weight: 700;
  letter-spacing: 2px;
  color: #fff;
- text-shadow: 0 0 20px rgba(212, 163, 115, 0.9);
+ text-shadow: 0 0 20px rgba(212, 163, 115, 0.8);
  font-family: 'Playfair Display', serif;
  }
 
- /* HAMBURGER MENÜ İKONU */
+ /* SOL TARAFTAKİ İKONLAR */
+ .header-icons {
+ display: flex;
+ align-items: center;
+ gap: 20px;
+ }
+
  .menu-toggle {
  display: none;
  font-size: 1.8rem;
@@ -84,6 +93,19 @@
 
  .menu-toggle:hover {
  color: var(--secondary-color);
+ }
+
+ .insta-link {
+ font-size: 1.8rem;
+ color: var(--primary-color);
+ transition: all 0.3s;
+ text-decoration: none;
+ }
+
+ .insta-link:hover {
+ color: var(--secondary-color);
+ transform: scale(1.1);
+ filter: drop-shadow(0 0 10px rgba(212, 163, 115, 0.8));
  }
 
  nav ul {
@@ -123,7 +145,7 @@
  /* --- Hero Section --- */
  .hero {
  height: 100vh;
- background: linear-gradient(rgba(15, 8, 3, 0.4), rgba(5, 2, 0, 0.7)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
+ background: linear-gradient(rgba(8, 4, 2, 0.7), rgba(15, 10, 5, 0.8)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
  background-attachment: fixed;
@@ -139,7 +161,7 @@
  .hero h1 {
  font-size: 6rem;
  margin-bottom: 20px;
- text-shadow: 2px 2px 25px rgba(0,0,0,1), 0 0 40px rgba(212, 163, 115, 0.8);
+ text-shadow: 2px 2px 25px rgba(0,0,0,1), 0 0 40px rgba(212, 163, 115, 0.6);
  animation: fadeInDown 1s ease-out;
  letter-spacing: 5px;
  color: #fff;
@@ -148,10 +170,10 @@
  }
 
  .hero p {
- font-size: 1.6rem;
+ font-size: 1.5rem;
  max-width: 800px;
  margin-bottom: 50px;
- color: var(--secondary-color);
+ color: var(--text-secondary);
  animation: fadeInUp 1s ease-out 0.3s backwards;
  font-weight: 300;
  text-shadow: 0 2px 15px rgba(0,0,0,0.9);
@@ -160,7 +182,7 @@
 
  .cta-btn {
  padding: 20px 60px;
- background: linear-gradient(135deg, var(--primary-color), #b58556);
+ background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
  color: #fff;
  border: none;
  border-radius: 50px;
@@ -170,7 +192,7 @@
  text-decoration: none;
  transition: all 0.3s;
  animation: fadeInUp 1s ease-out 0.6s backwards;
- box-shadow: 0 8px 35px rgba(212, 163, 115, 0.5);
+ box-shadow: 0 8px 35px rgba(212, 163, 115, 0.4);
  text-transform: uppercase;
  letter-spacing: 2px;
  border: 1px solid rgba(255,255,255,0.2);
@@ -178,8 +200,8 @@
 
  .cta-btn:hover {
  transform: translateY(-5px);
- box-shadow: 0 12px 45px rgba(212, 163, 115, 0.7);
- background: linear-gradient(135deg, #b58556, #966a43);
+ box-shadow: 0 12px 45px rgba(212, 163, 115, 0.6);
+ background: linear-gradient(135deg, var(--accent-color), #966a43);
  }
 
  /* --- Features Section --- */
@@ -201,7 +223,7 @@
  }
 
  .section-title p {
- color: #ccc;
+ color: var(--text-muted);
  font-size: 1.2rem;
  max-width: 600px;
  margin: 0 auto;
@@ -227,12 +249,12 @@
  flex-direction: column;
  height: 100%;
  backdrop-filter: blur(10px);
- box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+ box-shadow: 0 10px 30px rgba(0,0,0,0.6);
  }
 
  .card:hover {
  transform: translateY(-10px) scale(1.02);
- box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 163, 115, 0.3);
+ box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 163, 115, 0.2);
  border-color: var(--primary-color);
  }
 
@@ -242,7 +264,7 @@
  display: flex;
  align-items: center;
  justify-content: center;
- background: rgba(0,0,0,0.2);
+ background: rgba(0,0,0,0.3);
  border-bottom: 1px solid rgba(212, 163, 115, 0.2);
  }
 
@@ -274,7 +296,7 @@
  }
 
  .card p {
- color: #ddd;
+ color: var(--text-secondary);
  font-size: 1.1rem;
  line-height: 1.7;
  }
@@ -309,20 +331,22 @@
  align-items: center;
  justify-content: center;
  margin-bottom: 30px;
- padding: 20px;
- background: rgba(255,255,255,0.03);
+ padding: 25px;
+ background: rgba(255,255,255,0.05);
  border-radius: 15px;
- border-left: 4px solid var(--primary-color);
+ border-left: 5px solid var(--primary-color);
  transition: all 0.3s;
+ box-shadow: 0 5px 15px rgba(0,0,0,0.3);
  }
 
  .info-item:hover {
- background: rgba(255,255,255,0.06);
- transform: translateX(5px);
+ background: rgba(255,255,255,0.08);
+ transform: translateX(8px);
+ box-shadow: 0 8px 25px rgba(212, 163, 115, 0.2);
  }
 
  .info-item i {
- font-size: 2.2rem;
+ font-size: 2.5rem;
  color: var(--primary-color);
  margin-right: 25px;
  min-width: 50px;
@@ -330,30 +354,55 @@
  }
 
  .info-text h4 {
- font-size: 1.4rem;
- margin-bottom: 8px;
+ font-size: 1.5rem;
+ margin-bottom: 10px;
  color: #fff;
- font-weight: 600;
+ font-weight: 700;
+ letter-spacing: 0.5px;
  }
 
  .info-text p {
- color: #bbb;
- font-size: 1.1rem;
- line-height: 1.5;
+ color: var(--text-secondary);
+ font-size: 1.15rem;
+ line-height: 1.6;
+ }
+
+ /* ÇALIŞMA SAATLERİ İÇİN ÖZEL STİL - DAHA BELİRGİN */
+ .info-item.working-hours {
+ background: linear-gradient(135deg, rgba(212, 163, 115, 0.1), rgba(181, 133, 86, 0.1));
+ border-left: 5px solid var(--primary-color);
+ box-shadow: 0 5px 20px rgba(212, 163, 115, 0.2);
+ }
+
+ .info-item.working-hours i {
+ color: var(--primary-color);
+ filter: drop-shadow(0 0 5px rgba(212, 163, 115, 0.8));
+ }
+
+ .info-item.working-hours h4 {
+ color: var(--primary-color);
+ text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
+ }
+
+ .info-item.working-hours p {
+ color: var(--text-secondary);
+ font-weight: 500;
  }
 
  .phone-link {
  color: var(--primary-color);
  font-weight: 700;
  text-decoration: none;
- font-size: 1.4rem;
+ font-size: 1.5rem;
  transition: all 0.3s;
+ display: inline-block;
+ margin-top: 5px;
  }
 
  .phone-link:hover {
  color: #fff;
  text-decoration: underline;
- text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
+ text-shadow: 0 0 10px rgba(212, 163, 115, 0.8);
  }
 
  /* --- Footer & GÜZEL GÜVENLİK UYARISI --- */
@@ -361,8 +410,8 @@
  background: #050200;
  text-align: center;
  padding: 40px;
- border-top: 1px solid #6d4c41;
- color: #888;
+ border-top: 1px solid rgba(212, 163, 115, 0.3);
+ color: var(--text-muted);
  font-size: 0.95rem;
  position: relative;
  overflow: hidden;
@@ -435,10 +484,13 @@
  /* Mobil Uyum */
  @media (max-width: 768px) {
  .hero h1 { font-size: 3.5rem; }
- .hero p { font-size: 1.3rem; }
+ .hero p { font-size: 1.2rem; }
  
- /* MENÜ GÖRÜNÜMÜ MOBİLDE */
  .menu-toggle {
+ display: block;
+ }
+ 
+ .insta-link {
  display: block;
  }
  
@@ -449,9 +501,9 @@
  top: 70px;
  right: 0;
  width: 100%;
- background: rgba(5, 2, 0, 0.98);
+ background: rgba(10, 5, 2, 0.98);
  padding: 20px;
- border-bottom: 1px solid #6d4c41;
+ border-bottom: 1px solid rgba(212, 163, 115, 0.3);
  gap: 15px;
  }
  
@@ -480,9 +532,17 @@
  <div class="brand-name">CAYZADEM</div>
  </div>
  
+ <!-- SOL TARAFTAKİ İKONLAR -->
+ <div class="header-icons">
  <!-- HAMBURGER MENÜ BUTONU -->
  <div class="menu-toggle" onclick="toggleMenu()">
  <i class="fas fa-bars"></i>
+ </div>
+ 
+ <!-- INSTAGRAM İKONU -->
+ <a href="https://www.instagram.com/abdulkadirbayrakdar__?igsh=MWxpbnYwbXk4M3F1eg==" target="_blank" class="insta-link" title="Instagram'da Takip Et">
+ <i class="fab fa-instagram"></i>
+ </a>
  </div>
  
  <nav id="nav-menu">
@@ -509,7 +569,7 @@
  </div>
  
  <div class="grid-container">
- <!-- Nargile Keyfi Kartı (GÜNCELLENDİ) -->
+ <!-- Nargile Keyfi Kartı -->
  <div class="card">
  <div class="card-icon-container">
  <i class="fas fa-wind card-icon"></i>
@@ -520,7 +580,7 @@
  </div>
  </div>
 
- <!-- Sıcak & Soğuk İçecekler Kartı (GÜNCELLENDİ) -->
+ <!-- Sıcak & Soğuk İçecekler Kartı -->
  <div class="card">
  <div class="card-icon-container">
  <i class="fas fa-mug-hot card-icon"></i>
@@ -531,7 +591,7 @@
  </div>
  </div>
 
- <!-- Tost & Atıştırmalıklar Kartı (GÜNCELLENDİ) -->
+ <!-- Tost & Atıştırmalıklar Kartı -->
  <div class="card">
  <div class="card-icon-container">
  <i class="fas fa-burger card-icon"></i>
@@ -568,11 +628,12 @@
  </div>
  </div>
 
- <div class="info-item">
+ <!-- ÇALIŞMA SAATLERİ - DAHA BELİRGİN -->
+ <div class="info-item working-hours">
  <i class="fas fa-clock"></i>
  <div class="info-text">
  <h4>Çalışma Saatleri</h4>
- <p>Her gün: 08:00 – 01:00<br>Sabahın ilk deminden gece yarısına kadar hizmetinizdeyiz.</p>
+ <p><strong>Her Gün: 08:00 – 01:00</strong><br>Sabahın ilk deminden gece yarısına kadar hizmetinizdeyiz.</p>
  </div>
  </div>
 
@@ -590,7 +651,7 @@
  <!-- Footer -->
  <footer>
  <p>&copy; 2026 <span>Cayzadem</span>. Tüm hakları saklıdır. | Erzurum'un En Sıcak Mekanı</p>
- <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">Sürekli canlı, sürekli dolu, sürekli keyif.</p>
+ <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted);">Sürekli canlı, sürekli dolu, sürekli keyif.</p>
  
  <!-- GÜVENLİK UYARISI -->
  <div class="security-banner">
@@ -608,12 +669,12 @@
  const header = document.querySelector('header');
  if (window.scrollY > 50) {
  header.style.padding = '10px 5%';
- header.style.background = 'rgba(5, 2, 0, 0.98)';
- header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.7)';
+ header.style.background = 'rgba(10, 5, 2, 0.99)';
+ header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.9)';
  } else {
  header.style.padding = '15px 5%';
- header.style.background = 'rgba(5, 2, 0, 0.97)';
- header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.6)';
+ header.style.background = 'rgba(10, 5, 2, 0.98)';
+ header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.8)';
  }
  });
 
