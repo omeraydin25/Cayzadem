@@ -26,7 +26,6 @@
 
  body {
  font-family: 'Poppins', sans-serif;
- /* YENİ ARKA PLAN: Erzurum manzarası + sıcak kahve tonları */
  background: linear-gradient(rgba(10, 5, 2, 0.7), rgba(20, 10, 5, 0.9)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
@@ -43,7 +42,7 @@
 
  /* --- Header --- */
  header {
- background: rgba(5, 2, 0, 0.97); /* Çok koyu, neredeyse siyah */
+ background: rgba(5, 2, 0, 0.97);
  padding: 15px 5%;
  position: fixed;
  width: 100%;
@@ -52,7 +51,7 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- border-bottom: 1px solid #6d4c41; /* Ahşap rengi */
+ border-bottom: 1px solid #6d4c41;
  backdrop-filter: blur(15px);
  transition: all 0.3s ease;
  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
@@ -72,6 +71,19 @@
  color: #fff;
  text-shadow: 0 0 20px rgba(212, 163, 115, 0.9);
  font-family: 'Playfair Display', serif;
+ }
+
+ /* HAMBURGER MENÜ İKONU */
+ .menu-toggle {
+ display: none;
+ font-size: 1.8rem;
+ color: var(--primary-color);
+ cursor: pointer;
+ transition: color 0.3s;
+ }
+
+ .menu-toggle:hover {
+ color: var(--secondary-color);
  }
 
  nav ul {
@@ -111,7 +123,6 @@
  /* --- Hero Section --- */
  .hero {
  height: 100vh;
- /* Arka plan aynı kaldı, sadece overlay hafifletildi */
  background: linear-gradient(rgba(15, 8, 3, 0.4), rgba(5, 2, 0, 0.7)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
@@ -174,7 +185,6 @@
  /* --- Features Section --- */
  .features {
  padding: 100px 5%;
- /* Koyu kahve geçişi */
  background: linear-gradient(to bottom, #1a1510, #0d0805);
  }
 
@@ -226,22 +236,26 @@
  border-color: var(--primary-color);
  }
 
- .card-img-container {
- height: 250px;
+ .card-icon-container {
+ height: 180px;
  width: 100%;
- overflow: hidden;
- position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: rgba(0,0,0,0.2);
+ border-bottom: 1px solid rgba(212, 163, 115, 0.2);
  }
 
- .card-img {
- width: 100%;
- height: 100%;
- object-fit: cover;
- transition: transform 0.7s;
+ .card-icon {
+ font-size: 4rem;
+ color: var(--primary-color);
+ filter: drop-shadow(0 0 15px rgba(212, 163, 115, 0.6));
+ animation: float 3s ease-in-out infinite;
  }
 
- .card:hover .card-img {
- transform: scale(1.15);
+ @keyframes float {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-10px); }
  }
 
  .card-content {
@@ -251,14 +265,6 @@
  display: flex;
  flex-direction: column;
  justify-content: space-between;
- }
-
- .card-icon {
- font-size: 2.8rem;
- color: var(--primary-color);
- margin-bottom: 20px;
- display: block;
- filter: drop-shadow(0 0 10px rgba(212, 163, 115, 0.5));
  }
 
  .card h3 {
@@ -430,7 +436,33 @@
  @media (max-width: 768px) {
  .hero h1 { font-size: 3.5rem; }
  .hero p { font-size: 1.3rem; }
- nav ul { display: none; }
+ 
+ /* MENÜ GÖRÜNÜMÜ MOBİLDE */
+ .menu-toggle {
+ display: block;
+ }
+ 
+ nav ul {
+ display: none;
+ flex-direction: column;
+ position: absolute;
+ top: 70px;
+ right: 0;
+ width: 100%;
+ background: rgba(5, 2, 0, 0.98);
+ padding: 20px;
+ border-bottom: 1px solid #6d4c41;
+ gap: 15px;
+ }
+ 
+ nav ul.active {
+ display: flex;
+ }
+ 
+ nav a {
+ font-size: 1.2rem;
+ }
+ 
  .info-section { padding: 60px 5%; }
  .section-title h2 { font-size: 2.5rem; }
  .info-item { flex-direction: column; text-align: center; }
@@ -447,11 +479,17 @@
  <div class="logo-container" onclick="window.scrollTo({top:0, behavior:'smooth'})">
  <div class="brand-name">CAYZADEM</div>
  </div>
- <nav>
+ 
+ <!-- HAMBURGER MENÜ BUTONU -->
+ <div class="menu-toggle" onclick="toggleMenu()">
+ <i class="fas fa-bars"></i>
+ </div>
+ 
+ <nav id="nav-menu">
  <ul>
- <li><a href="#home">Ana Sayfa</a></li>
- <li><a href="#features">Hizmetlerimiz</a></li>
- <li><a href="#contact">İletişim</a></li>
+ <li><a href="#home" onclick="toggleMenu()">Ana Sayfa</a></li>
+ <li><a href="#features" onclick="toggleMenu()">Hizmetlerimiz</a></li>
+ <li><a href="#contact" onclick="toggleMenu()">İletişim</a></li>
  </ul>
  </nav>
  </header>
@@ -471,47 +509,45 @@
  </div>
  
  <div class="grid-container">
- <!-- Nargile Kartı -->
+ <!-- Nargile Keyfi Kartı -->
  <div class="card">
- <div class="card-img-container">
- <img src="https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=800&auto=format&fit=crop" alt="Nargile Keyfi" class="card-img">
+ <div class="card-icon-container">
+ <i class="fas fa-wind card-icon"></i>
  </div>
  <div class="card-content">
- <i class="fas fa-wind card-icon"></i>
  <h3>Nargile Keyfi</h3>
  <p>Usta ellerde hazırlanan, özel karışımlı nargilelerimizle sohbetinizi lezzetlendirin. Sürekli duman, sürekli keyif.</p>
  </div>
  </div>
 
- <!-- İçecekler Kartı -->
+ <!-- Sıcak & Soğuk İçecekler Kartı -->
  <div class="card">
- <div class="card-img-container">
- <img src="https://images.unsplash.com/photo-1596711686378-9d8b3a3d4f4f?q=80&w=800&auto=format&fit=crop" alt="Sıcak Soğuk İçecekler" class="card-img">
+ <div class="card-icon-container">
+ <i class="fas fa-mug-hot card-icon"></i>
  </div>
  <div class="card-content">
- <i class="fas fa-mug-hot card-icon"></i>
  <h3>Sıcak & Soğuk İçecekler</h3>
  <p>Taze demlenmiş Erzurum çayı, özel kahve çeşitleri ve serinletici soğuk içecekler. Deminiz asla soğumaz.</p>
  </div>
  </div>
 
- <!-- TOST & ATIŞTIRMALIKLAR (GÜNCELLENDİ - FOTOĞRAF KALDIRILDI, İKON EKLENDİ) -->
+ <!-- Tost & Atıştırmalıklar Kartı -->
  <div class="card">
- <!-- FOTOĞRAF KALDIRILDI -->
- <div class="card-content" style="padding-top: 40px;">
- <i class="fas fa-burger card-icon"></i> <!-- TOAST İKONU (LOGO GİBİ) -->
+ <div class="card-icon-container">
+ <i class="fas fa-burger card-icon"></i>
+ </div>
+ <div class="card-content">
  <h3>Tost & Atıştırmalıklar</h3>
  <p>Sıcacık tostlar, özel soslu sandviçler ve günlük menümüzdeki sıcak yemeklerle mideniz de doysun.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Her saat taze, her lokma lezzetli!</strong></p>
  </div>
  </div>
 
- <!-- SÜPER LİG HEYECANI -->
+ <!-- Süper Lig Heyecanı Kartı -->
  <div class="card">
- <div class="card-img-container" style="background: #252525; display: flex; align-items: center; justify-content: center;">
- <i class="fas fa-futbol" style="font-size: 5rem; color: #444;"></i>
+ <div class="card-icon-container">
+ <i class="fas fa-futbol card-icon"></i>
  </div>
  <div class="card-content">
- <i class="fas fa-futbol card-icon" style="font-size: 2rem; margin-top: -20px;"></i>
  <h3>Süper Lig Heyecanı</h3>
  <p>Büyük ekranlarda canlı Süper Lig yayınları. Fenerbahçe, Galatasaray, Beşiktaş derbilerini yaşayın.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Derbi geceleri rezervasyon şart!</strong></p>
  </div>
@@ -595,6 +631,14 @@
  }
  });
  });
+
+ // Mobil Menü Aç/Kapa
+ function toggleMenu() {
+ const nav = document.getElementById('nav-menu');
+ if (window.innerWidth <= 768) {
+ nav.querySelector('ul').classList.toggle('active');
+ }
+ }
  </script>
 </body>
 </html>
