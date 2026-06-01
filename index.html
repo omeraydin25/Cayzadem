@@ -270,7 +270,7 @@
  font-size: 1rem;
  }
 
- /* --- Review Section --- */
+ /* --- Review Section (YENİ EKLENEN) --- */
  .review-section {
  padding: 80px 5%;
  background: #0d0805;
@@ -305,7 +305,7 @@
  color: var(--star-color);
  }
 
- textarea {
+ textarea, input[type="text"] {
  width: 100%;
  padding: 15px;
  background: rgba(255, 255, 255, 0.05);
@@ -320,7 +320,11 @@
  transition: border-color 0.3s;
  }
 
- textarea:focus {
+ input[type="text"] {
+ min-height: auto;
+ }
+
+ textarea:focus, input[type="text"]:focus {
  border-color: var(--primary-color);
  }
 
@@ -336,6 +340,7 @@
  transition: all 0.3s;
  text-transform: uppercase;
  letter-spacing: 1px;
+ width: 100%;
  }
 
  .submit-btn:hover {
@@ -349,6 +354,7 @@
  color: var(--security-green);
  font-weight: 600;
  animation: fadeInUp 0.5s ease-out;
+ font-size: 1.1rem;
  }
 
  /* --- Footer --- */
@@ -463,40 +469,60 @@
 
  <!-- Hero Section -->
  <section class="hero" id="home">
- <h1>Cayzadem</h1>
- <p>Erzurum'un en özel lezzet durağında, geleneksel çay kültürünü modern dokunuşlarla buluşturuyoruz.</p>
- <a href="#reviews" class="cta-btn">Yorum Yap</a>
+ <h1>CAYZADEM</h1>
+ <p>Nargilenin keyfi, kahvenin aroması ve Süper Lig'in en büyük heyecanı tek çatıda.<br>Erzurum'da unutulmaz anılar için doğru adres.</p>
+ <a href="#contact" class="cta-btn">REZERVASYON YAP</a>
  </section>
 
  <!-- Features Section -->
  <section class="features" id="features">
- <h2 class="section-title">Neden Biz?</h2>
+ <h2 class="section-title">Deneyiminiz</h2>
+ <p style="text-align: center; color: var(--text-secondary); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">Sadece bir mekan değil, bir yaşam tarzı. Her an canlı, her saat dolu.</p>
+ 
  <div class="features-grid">
  <div class="feature-card">
+ <i class="fas fa-smoking feature-icon"></i>
+ <h3>Nargile Keyfi</h3>
+ <p>Usta ellerde hazırlanan, özel karışımlı nargilelerimizle sohbetinizi lezzetlendirin. Sürekli keyif.</p>
+ </div>
+ <div class="feature-card">
  <i class="fas fa-mug-hot feature-icon"></i>
- <h3>Otantik Lezzet</h3>
- <p>En seçkin çay yaprakları ile hazırlanan, damaklarda unutulmaz tatlar bırakan özel karışımlar.</p>
+ <h3>Sıcak & Soğuk İçecekler</h3>
+ <p>Taze demlenmiş Erzurum çayı, çeşitleri ve serinletici soğuk içecekler. Deminiz asla soğumaz.</p>
  </div>
  <div class="feature-card">
- <i class="fas fa-wifi feature-icon"></i>
- <h3>Konforlu Ortam</h3>
- <p>Hem iş görüşmeleri hem de keyifli sohbetler için tasarlanmış modern ve sıcak mekanımız.</p>
+ <i class="fas fa-burger feature-icon"></i>
+ <h3>Tost & Atıştırmalıklar</h3>
+ <p>Sıcacık tostlar, patsolar ve günlük menümüzdeki lezzetli mideniz de doysun.<br>Her saat taze, her lokma lezzetli!</p>
  </div>
  <div class="feature-card">
- <i class="fas fa-star feature-icon"></i>
- <h3>Üstün Hizmet</h3>
- <p>Misafirlerimize her zaman en iyi deneyimi sunmak için çalışan uzman ekibimiz.</p>
+ <i class="fas fa-futbol feature-icon"></i>
+ <h3>Süper Lig Heyecanı</h3>
+ <p>Büyük ekranlarda canlı Süper Lig yayınları. Fenerbahçe, Galatasaray, Beşiktaş derbilerini yaşayın.<br>Derbi geceleri rezervasyon şart!</p>
  </div>
  </div>
  </section>
 
- <!-- Review Section -->
+ <!-- Yorum Bölümü (YENİ) -->
  <section class="review-section" id="reviews">
- <h2 class="section-title">Yorum Yapın</h2>
- <div class="review-container">
- <p style="margin-bottom: 20px; color: var(--text-secondary);">Deneyiminizi bizimle paylaşın!</p>
+ <h2 class="section-title">Müşteri Yorumları</h2>
+ <p style="margin-bottom: 20px; color: var(--text-secondary);">Bize olan güveniniz için teşekkür ederiz</p>
  
- <div class="star-rating" id="star-rating">
+ <div class="star-rating" id="star-rating-display">
+ <i class="fas fa-star" style="color: var(--star-empty);"></i>
+ <i class="fas fa-star" style="color: var(--star-empty);"></i>
+ <i class="fas fa-star" style="color: var(--star-empty);"></i>
+ <i class="fas fa-star" style="color: var(--star-empty);"></i>
+ <i class="fas fa-star" style="color: var(--star-empty);"></i>
+ </div>
+ <p style="margin-bottom: 40px; color: var(--text-muted);">(0 yorum)</p>
+
+ <div class="review-container">
+ <h3 style="margin-bottom: 20px; color: var(--primary-color);">Kendi Yorumunuzu Yazın</h3>
+ 
+ <input type="text" id="user-name" placeholder="Adınız Soyadınız">
+ 
+ <div class="star-rating" id="star-rating-input">
  <span class="star" data-value="1"><i class="fas fa-star"></i></span>
  <span class="star" data-value="2"><i class="fas fa-star"></i></span>
  <span class="star" data-value="3"><i class="fas fa-star"></i></span>
@@ -504,9 +530,9 @@
  <span class="star" data-value="5"><i class="fas fa-star"></i></span>
  </div>
 
- <textarea id="comment-text" placeholder="Yorumunuzu buraya yazın..."></textarea>
+ <textarea id="comment-text" placeholder="Yorumunuz"></textarea>
  
- <button class="submit-btn" id="submit-review">Gönder</button>
+ <button class="submit-btn" id="submit-review">YORUM GÖNDER</button>
  
  <div class="success-message" id="success-message">
  <i class="fas fa-check-circle"></i> Yorumunuz başarıyla gönderildi!
@@ -514,20 +540,39 @@
  </div>
  </section>
 
- <!-- Footer -->
+ <!-- Footer / İletişim -->
  <footer id="contact">
- <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
- <span class="brand-name">CAYZADEM</span>
- </div>
- <p>© 2026 Cayzadem. Tüm hakları saklıdır. | Erzurum</p>
- <p style="font-size: 0.9rem; margin-top: 10px;">Instagram'da bizi takip edin.</p>
+ <h2 style="color: var(--primary-color); margin-bottom: 30px;">Bize Ulaşın</h2>
  
+ <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; text-align: left;">
+ <div style="flex: 1; min-width: 250px;">
+ <h3 style="color: var(--primary-color); margin-bottom: 15px;">Adresimiz</h3>
+ <p>Erzurum / Palandöken / Yenişehir<br>Cayzadem Kahve<br>Günün her saati sizleri bekliyor!</p>
+ </div>
+ 
+ <div style="flex: 1; min-width: 250px;">
+ <h3 style="color: var(--primary-color); margin-bottom: 15px;">Çalışma Saatleri</h3>
+ <p>Her Gün: 08:00 – 01:00<br>Sabahın ilk deminden gece yarısına kadar hizmetinizdeyiz.</p>
+ </div>
+ 
+ <div style="flex: 1; min-width: 250px;">
+ <h3 style="color: var(--primary-color); margin-bottom: 15px;">Rezervasyon & Bilgi</h3>
+ <p>Masanızı hemen ayırtın:<br><strong>0 (533) 622 70 20</strong></p>
+ </div>
+ </div>
+
+ <div style="margin-top: 50px; text-align: center;">
+ <h2 style="color: var(--primary-color);">ÇAYIN VE MUHABBETİN ADRESİ</h2>
+ <p style="margin-bottom: 30px;">Sürekli canlı, sürekli dolu, sürekli keyif</p>
+ </div>
+
+ <!-- Telif Hakkı Bildirimi -->
  <div class="copyright">
  &copy; 2026 Cayzadem. Tüm hakları saklıdır. Bu web sitesi ve içeriği telif hakkı yasaları ile korunmaktadır. İzinsiz kopyalanması veya dağıtılması yasaktır.
  </div>
  </footer>
 
- <!-- JavaScript for Mobile Menu and Reviews -->
+ <!-- JavaScript -->
  <script>
  // Mobile Menu Logic
  const menuToggle = document.getElementById('mobile-menu');
@@ -558,9 +603,10 @@
  });
 
  // Review System Logic
- const stars = document.querySelectorAll('.star');
+ const stars = document.querySelectorAll('#star-rating-input .star');
  const submitBtn = document.getElementById('submit-review');
  const commentText = document.getElementById('comment-text');
+ const userNameInput = document.getElementById('user-name');
  const successMessage = document.getElementById('success-message');
  let selectedRating = 0;
 
@@ -579,7 +625,7 @@
  });
 
  // Reset stars on mouse leave from the container
- document.getElementById('star-rating').addEventListener('mouseleave', () => {
+ document.getElementById('star-rating-input').addEventListener('mouseleave', () => {
  if (selectedRating > 0) {
  updateStars(selectedRating);
  } else {
@@ -600,10 +646,16 @@
 
  // Submit logic
  submitBtn.addEventListener('click', () => {
+ const name = userNameInput.value.trim();
  const comment = commentText.value.trim();
 
  if (selectedRating === 0) {
  alert('Lütfen bir yıldız puanı seçin.');
+ return;
+ }
+
+ if (name === '') {
+ alert('Lütfen adınızı girin.');
  return;
  }
 
@@ -618,10 +670,11 @@
 
  setTimeout(() => {
  successMessage.style.display = 'block';
+ userNameInput.value = '';
  commentText.value = '';
  selectedRating = 0;
  updateStars(0);
- submitBtn.textContent = 'Gönder';
+ submitBtn.textContent = 'YORUM GÖNDER';
  submitBtn.disabled = false;
 
  // Hide success message after 3 seconds
