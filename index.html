@@ -13,8 +13,7 @@
  :root {
  --primary-color: #d4a373; /* Altın kahve */
  --secondary-color: #faedcd; /* Krem */
- --dark-bg: #121212; /* Derin siyah */
- --card-bg: rgba(30, 30, 30, 0.85); /* Yarı saydam kart arka planı */
+ --card-bg: rgba(20, 15, 10, 0.85); /* Koyu kahve/ahşap tonu */
  --text-color: #f5f5f5;
  --security-green: #2ecc71; /* Güvenlik yeşili */
  }
@@ -27,7 +26,7 @@
 
  body {
  font-family: 'Poppins', sans-serif;
- background-color: var(--dark-bg);
+ background: linear-gradient(rgba(0,0,0,0.4), rgba(20, 10, 5, 0.9));
  color: var(--text-color);
  line-height: 1.6;
  overflow-x: hidden;
@@ -38,9 +37,9 @@
  color: var(--primary-color);
  }
 
- /* --- Header & Logo --- */
+ /* --- Header --- */
  header {
- background: rgba(18, 18, 18, 0.95);
+ background: rgba(10, 5, 0, 0.95);
  padding: 15px 5%;
  position: fixed;
  width: 100%;
@@ -49,7 +48,7 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- border-bottom: 1px solid #333;
+ border-bottom: 1px solid #5c4033;
  backdrop-filter: blur(10px);
  transition: all 0.3s ease;
  }
@@ -61,7 +60,6 @@
  cursor: pointer;
  }
 
- /* LOGO RESMİ KALDIRILDI - SADECE YAZI KALDI */
  .brand-name {
  font-size: 2rem;
  font-weight: 700;
@@ -89,11 +87,10 @@
  color: var(--primary-color);
  }
 
- /* --- Hero Section (YENİ GÖRSEL) --- */
+ /* --- Hero Section --- */
  .hero {
  height: 100vh;
- /* Yüklenen görsel ana arka plan olarak kullanılıyor */
- background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
+ background: linear-gradient(rgba(20, 10, 5, 0.5), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
  background-attachment: fixed;
@@ -152,7 +149,7 @@
  /* --- Features Section --- */
  .features {
  padding: 100px 5%;
- background: #1a1a1a;
+ background: linear-gradient(to bottom, #1a1a1a, #0f0a05);
  }
 
  .section-title {
@@ -177,7 +174,7 @@
 
  .grid-container {
  display: grid;
- grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
  gap: 40px;
  max-width: 1200px;
  margin: 0 auto;
@@ -248,10 +245,10 @@
  line-height: 1.7;
  }
 
- /* --- Info Section (İletişim) --- */
+ /* --- Info Section --- */
  .info-section {
  padding: 100px 5%;
- background: linear-gradient(to bottom, #1a1a1a, #121212);
+ background: linear-gradient(to bottom, #0f0a05, #050200);
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
@@ -323,12 +320,12 @@
  text-decoration: underline;
  }
 
- /* --- Footer & Güvenlik Uyarısı --- */
+ /* --- Footer & GELİŞMİŞ GÜVENLİK UYARISI --- */
  footer {
- background: #0a0a0a;
+ background: #050200;
  text-align: center;
  padding: 40px;
- border-top: 1px solid #333;
+ border-top: 1px solid #5c4033;
  color: #777;
  font-size: 0.95rem;
  position: relative;
@@ -339,31 +336,55 @@
  color: var(--primary-color);
  }
 
- /* Güvenlik Çubuğu Tasarımı */
+ /* YENİ TASARIM: Şık Güvenlik Çubuğu */
  .security-banner {
  position: absolute;
  bottom: 0;
  left: 0;
  width: 100%;
- background: rgba(46, 204, 113, 0.1);
+ background: rgba(15, 25, 15, 0.95); /* Çok koyu yeşil-siyah */
  border-top: 1px solid var(--security-green);
- padding: 15px 0;
+ padding: 12px 0;
  display: flex;
  justify-content: center;
  align-items: center;
- gap: 10px;
- font-size: 0.9rem;
- color: var(--security-green);
+ gap: 12px;
+ font-size: 0.95rem;
  font-weight: 600;
+ color: #e0f7e8;
+ backdrop-filter: blur(5px);
+ box-shadow: 0 -2px 10px rgba(46, 204, 113, 0.2);
  }
 
- .security-banner i {
- font-size: 1.1rem;
+ .security-status {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ background: rgba(46, 204, 113, 0.15);
+ padding: 4px 12px;
+ border-radius: 20px;
+ border: 1px solid rgba(46, 204, 113, 0.3);
+ }
+
+ .rec-dot {
+ width: 8px;
+ height: 8px;
+ background: #ff3b30;
+ border-radius: 50%;
+ animation: pulse-red 1.5s infinite;
+ box-shadow: 0 0 8px #ff3b30;
+ }
+
+ @keyframes pulse-red {
+ 0% { opacity: 1; transform: scale(1); }
+ 50% { opacity: 0.5; transform: scale(1.2); }
+ 100% { opacity: 1; transform: scale(1); }
  }
 
  .security-text {
  color: #fff;
  font-weight: 500;
+ letter-spacing: 0.5px;
  }
 
  /* Animasyonlar */
@@ -385,7 +406,8 @@
  .section-title h2 { font-size: 2.5rem; }
  .info-item { flex-direction: column; text-align: center; }
  .info-item i { margin-right: 0; margin-bottom: 15px; }
- .security-banner { flex-direction: column; gap: 5px; }
+ .security-banner { flex-direction: column; gap: 8px; padding: 15px 0; }
+ .security-status { font-size: 0.85rem; }
  }
  </style>
 </head>
@@ -394,7 +416,6 @@
  <!-- Header -->
  <header id="header">
  <div class="logo-container" onclick="window.scrollTo({top:0, behavior:'smooth'})">
- <!-- LOGO RESMİ KALDIRILDI - SADECE YAZI KALDI -->
  <div class="brand-name">CAYZADEM</div>
  </div>
  <nav>
@@ -409,7 +430,7 @@
  <!-- Hero Section -->
  <section id="home" class="hero">
  <h1>CAYZADEM</h1>
- <p>Nargilenin keyfi, kahvenin aroması ve Süper Lig'in en büyük heyecanı tek çatıda.<br>Erzurum'da unutulmaz anılar için doğru adres.</p>
+ <p>Nargilenin keyfi, kahvenin aroması ve Süper Lig'in en büyük heyecanı tek çatıda.<br>Günün her saati canlı, tavla masaları dolu, skorlar takip ediliyor.<br>Erzurum'da unutulmaz anılar için doğru adres.</p>
  <a href="#contact" class="cta-btn">Rezervasyon Yap</a>
  </section>
 
@@ -417,7 +438,7 @@
  <section id="features" class="features">
  <div class="section-title">
  <h2>Deneyiminiz</h2>
- <p>Sadece bir mekan değil, bir yaşam tarzı.</p>
+ <p>Sadece bir mekan değil, bir yaşam tarzı. Her an canlı, her saat dolu.</p>
  </div>
  
  <div class="grid-container">
@@ -429,7 +450,7 @@
  <div class="card-content">
  <i class="fas fa-wind card-icon"></i>
  <h3>Nargile Keyfi</h3>
- <p>Usta ellerde hazırlanan, özel karışımlı nargilelerimizle sohbetinizi lezzetlendirin.</p>
+ <p>Usta ellerde hazırlanan, özel karışımlı nargilelerimizle sohbetinizi lezzetlendirin. Sürekli duman, sürekli keyif.</p>
  </div>
  </div>
 
@@ -441,19 +462,31 @@
  <div class="card-content">
  <i class="fas fa-mug-hot card-icon"></i>
  <h3>Sıcak & Soğuk İçecekler</h3>
- <p>Taze demlenmiş Erzurum çayı, özel kahve çeşitleri ve serinletici soğuk içecekler.</p>
+ <p>Taze demlenmiş Erzurum çayı, özel kahve çeşitleri ve serinletici soğuk içecekler. Deminiz asla soğumaz.</p>
  </div>
  </div>
 
- <!-- Süper Lig Kartı -->
+ <!-- Tost & Yemek Kartı -->
+ <div class="card">
+ <div class="card-img-container">
+ <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop" alt="Tost ve Yemekler" class="card-img">
+ </div>
+ <div class="card-content">
+ <i class="fas fa-burger card-icon"></i>
+ <h3>Tost & Lezzetli Yemekler</h3>
+ <p>Sıcacık tostlar, özel soslu sandviçler ve günlük menümüzdeki sıcak yemeklerle mideniz de doysun.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Her saat taze, her lokma lezzetli!</strong></p>
+ </div>
+ </div>
+
+ <!-- Maç & Oyun Kartı -->
  <div class="card">
  <div class="card-img-container" style="background: #252525; display: flex; align-items: center; justify-content: center;">
  <i class="fas fa-futbol" style="font-size: 5rem; color: #444;"></i>
  </div>
  <div class="card-content">
  <i class="fas fa-futbol card-icon" style="font-size: 2rem; margin-top: -20px;"></i>
- <h3>Süper Lig Heyecanı</h3>
- <p>Büyük ekranlarda canlı Süper Lig yayınları. Fenerbahçe, Galatasaray, Beşiktaş derbilerini ve tüm maçları arkadaşlarınızla birlikte yaşayın.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Derbi geceleri rezervasyon şart!</strong></p>
+ <h3>Süper Lig & Oyunlar</h3>
+ <p>Büyük ekranlarda canlı Süper Lig yayınları. Fenerbahçe, Galatasaray, Beşiktaş derbilerini yaşayın.<br>Tavla masalarımızda sürekli oyun, skor tablosunda sürekli hareket.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Derbi geceleri rezervasyon şart!</strong></p>
  </div>
  </div>
  </div>
@@ -468,7 +501,7 @@
  <i class="fas fa-map-marker-alt"></i>
  <div class="info-text">
  <h4>Adresimiz</h4>
- <p>Erzurum / Palandöken / Yenişehir<br>Cayzadem Kahve</p>
+ <p>Erzurum / Palandöken / Yenişehir<br>Cayzadem Kahve<br>Günün her saati sizleri bekliyor!</p>
  </div>
  </div>
 
@@ -476,7 +509,7 @@
  <i class="fas fa-clock"></i>
  <div class="info-text">
  <h4>Çalışma Saatleri</h4>
- <p>Her gün: 08:00 – 01:00<br>Sabahın ilk deminden gece yarısına kadar hizmetinizdeyiz.</p>
+ <p>Her gün: 08:00 – 01:00<br>Sabahın ilk deminden gece yarısına kadar hizmetinizdeyiz.<br>Tavla, maç ve sohbet hiç durmaz.</p>
  </div>
  </div>
 
@@ -494,11 +527,15 @@
  <!-- Footer -->
  <footer>
  <p>&copy; 2026 <span>Cayzadem</span>. Tüm hakları saklıdır. | Erzurum'un En Sıcak Mekanı</p>
+ <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">Sürekli canlı, sürekli dolu, sürekli keyif.</p>
  
- <!-- GÜVENLİK UYARISI EKLENDİ -->
+ <!-- YENİ VE GÜZELLEŞTİRİLMİŞ GÜVENLİK UYARISI -->
  <div class="security-banner">
- <i class="fas fa-video"></i>
- <span class="security-text">Mekanımız 7/24 güvenlik kamerası sistemi ile izlenmektedir.</span>
+ <div class="security-status">
+ <div class="rec-dot"></div>
+ <span style="color: var(--security-green); font-weight: 700; font-size: 0.85rem;">CANLI KAYIT</span>
+ </div>
+ <span class="security-text">Mekanımız 7/24 gelişmiş güvenlik kamerası sistemi ile izlenmektedir.</span>
  </div>
  </footer>
 
@@ -508,11 +545,11 @@
  const header = document.querySelector('header');
  if (window.scrollY > 50) {
  header.style.padding = '10px 5%';
- header.style.background = 'rgba(10, 10, 10, 0.98)';
+ header.style.background = 'rgba(10, 5, 0, 0.98)';
  header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
  } else {
  header.style.padding = '15px 5%';
- header.style.background = 'rgba(18, 18, 18, 0.95)';
+ header.style.background = 'rgba(10, 5, 0, 0.95)';
  header.style.boxShadow = 'none';
  }
  });
