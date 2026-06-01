@@ -67,7 +67,7 @@
  cursor: pointer; 
  transition: color 0.3s; 
  padding: 5px; 
- z-index: 1001; 
+ z-index: 1002; /* EN ÜSTTE OLSUN */
  }
  .menu-toggle:hover { color: var(--secondary-color); }
 
@@ -207,7 +207,7 @@
  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
  @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
- /* Mobil Uyum */
+ /* Mobil Uyum - DÜZELTİLDİ */
  @media (max-width: 768px) {
  .hero h1 { font-size: 3.5rem; }
  .hero p { font-size: 1.2rem; }
@@ -455,13 +455,10 @@
  }
  });
 
- // --- DÜZELTİLMİŞ MOBİL MENÜ FONKSİYONU ---
+ // --- DÜZELTİLMİŞ MOBİL MENÜ FONKSİYONU (KESİN ÇÖZÜM) ---
  function toggleMenu() {
- const nav = document.getElementById('nav-menu');
- const menuList = nav.querySelector('ul');
- 
- // Sadece mobilde çalışır
- if (window.innerWidth <= 768) {
+ const menuList = document.querySelector('#nav-menu ul');
+ if (menuList) {
  menuList.classList.toggle('active');
  }
  }
