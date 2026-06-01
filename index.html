@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Cayzadem | Erzurum'un En Samimi Mekanı</title>
+ <title>Cayzadem | Erzurum'un Favorisi</title>
  <!-- Google Fonts -->
  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
  <!-- Font Awesome İkonlar -->
@@ -11,12 +11,11 @@
  
  <style>
  :root {
- --primary-color: #d4a373; /* Altın kahve/çay rengi */
+ --primary-color: #d4a373; /* Altın kahve */
  --secondary-color: #faedcd; /* Krem */
- --dark-bg: #121212; /* Çok koyu zemin */
+ --dark-bg: #121212; /* Derin siyah */
  --card-bg: #1e1e1e;
  --text-color: #f5f5f5;
- --security-green: #2ecc71; /* Güvenlik yeşili */
  }
 
  * {
@@ -29,7 +28,7 @@
  font-family: 'Poppins', sans-serif;
  background-color: var(--dark-bg);
  color: var(--text-color);
- line-height: 1.8;
+ line-height: 1.6;
  overflow-x: hidden;
  }
 
@@ -106,10 +105,11 @@
  color: var(--primary-color);
  }
 
- /* --- Hero Section (Çay Tabağı Görseli) --- */
+ /* --- Hero Section (Çay + Limon Görseli) --- */
  .hero {
  height: 100vh;
- background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1596711686378-9d8b3a3d4f4f?q=80&w=1920&auto=format&fit=crop');
+ /* Çay, limon ve tazelik içeren profesyonel görsel */
+ background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596711686378-9d8b3a3d4f4f?q=80&w=1920&auto=format&fit=crop');
  background-size: cover;
  background-position: center;
  background-attachment: fixed;
@@ -127,35 +127,39 @@
  margin-bottom: 20px;
  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
  animation: fadeInDown 1s ease-out;
+ letter-spacing: 2px;
  }
 
  .hero p {
- font-size: 1.3rem;
- max-width: 750px;
- margin-bottom: 35px;
+ font-size: 1.4rem;
+ max-width: 700px;
+ margin-bottom: 40px;
  color: var(--secondary-color);
  animation: fadeInUp 1s ease-out 0.3s backwards;
+ font-weight: 300;
  }
 
  .cta-btn {
- padding: 15px 45px;
+ padding: 16px 50px;
  background: var(--primary-color);
  color: #fff;
  border: none;
- border-radius: 30px;
+ border-radius: 50px;
  font-size: 1.1rem;
  font-weight: 600;
  cursor: pointer;
  text-decoration: none;
- transition: transform 0.3s, background 0.3s;
+ transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
  animation: fadeInUp 1s ease-out 0.6s backwards;
- box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
+ box-shadow: 0 4px 20px rgba(212, 163, 115, 0.4);
+ text-transform: uppercase;
+ letter-spacing: 1px;
  }
 
  .cta-btn:hover {
- transform: translateY(-3px);
+ transform: translateY(-5px);
  background: #b58556;
- box-shadow: 0 6px 20px rgba(212, 163, 115, 0.5);
+ box-shadow: 0 8px 25px rgba(212, 163, 115, 0.6);
  }
 
  /* --- Features Section --- */
@@ -166,7 +170,7 @@
 
  .section-title {
  text-align: center;
- margin-bottom: 70px;
+ margin-bottom: 80px;
  }
 
  .section-title h2 {
@@ -180,6 +184,7 @@
  font-size: 1.1rem;
  max-width: 600px;
  margin: 0 auto;
+ font-style: italic;
  }
 
  .grid-container {
@@ -197,6 +202,9 @@
  transition: transform 0.4s, box-shadow 0.4s;
  border: 1px solid #333;
  position: relative;
+ display: flex;
+ flex-direction: column;
+ height: 100%;
  }
 
  .card:hover {
@@ -206,7 +214,7 @@
  }
 
  .card-img-container {
- height: 240px;
+ height: 250px;
  width: 100%;
  overflow: hidden;
  position: relative;
@@ -226,6 +234,10 @@
  .card-content {
  padding: 30px;
  text-align: center;
+ flex-grow: 1;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
  }
 
  .card-icon {
@@ -244,47 +256,10 @@
  .card p {
  color: #ccc;
  font-size: 1.05rem;
- line-height: 1.8;
+ line-height: 1.7;
  }
 
- /* --- Güvenlik Kartı (Yeni Eklenen) --- */
- .security-card {
- border-color: var(--security-green);
- }
-
- .security-card:hover {
- box-shadow: 0 15px 40px rgba(46, 204, 113, 0.3);
- border-color: var(--security-green);
- }
-
- .security-card .card-icon {
- color: var(--security-green);
- }
-
- .live-badge {
- position: absolute;
- top: 15px;
- right: 15px;
- background: #e74c3c;
- color: white;
- padding: 5px 12px;
- border-radius: 20px;
- font-size: 0.8rem;
- font-weight: bold;
- display: flex;
- align-items: center;
- gap: 5px;
- box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
- animation: pulse 2s infinite;
- }
-
- @keyframes pulse {
- 0% { opacity: 1; }
- 50% { opacity: 0.6; }
- 100% { opacity: 1; }
- }
-
- /* --- Info Section (Adres & İletişim) --- */
+ /* --- Info Section (İletişim) --- */
  .info-section {
  padding: 100px 5%;
  background: linear-gradient(to bottom, #1a1a1a, #121212);
@@ -304,7 +279,7 @@
 
  .info-box h3 {
  font-size: 2.5rem;
- margin-bottom: 30px;
+ margin-bottom: 40px;
  color: var(--primary-color);
  }
 
@@ -312,32 +287,50 @@
  display: flex;
  align-items: center;
  justify-content: center;
- margin-bottom: 25px;
- padding: 15px;
- background: rgba(255,255,255,0.05);
- border-radius: 10px;
- border-left: 3px solid var(--primary-color);
+ margin-bottom: 30px;
+ padding: 20px;
+ background: rgba(255,255,255,0.03);
+ border-radius: 15px;
+ border-left: 4px solid var(--primary-color);
+ transition: background 0.3s;
+ }
+
+ .info-item:hover {
+ background: rgba(255,255,255,0.06);
  }
 
  .info-item i {
- font-size: 1.8rem;
+ font-size: 2rem;
  color: var(--primary-color);
- margin-right: 20px;
- min-width: 40px;
+ margin-right: 25px;
+ min-width: 50px;
  text-align: center;
  }
 
  .info-text h4 {
- font-size: 1.2rem;
- margin-bottom: 5px;
+ font-size: 1.3rem;
+ margin-bottom: 8px;
  color: #fff;
  font-weight: 600;
  }
 
  .info-text p {
  color: #bbb;
- font-size: 1rem;
- line-height: 1.6;
+ font-size: 1.05rem;
+ line-height: 1.5;
+ }
+
+ .phone-link {
+ color: var(--primary-color);
+ font-weight: 700;
+ text-decoration: none;
+ font-size: 1.3rem;
+ transition: color 0.3s;
+ }
+
+ .phone-link:hover {
+ color: #fff;
+ text-decoration: underline;
  }
 
  /* --- Footer --- */
@@ -372,7 +365,7 @@
  .info-section { padding: 60px 5%; }
  .section-title h2 { font-size: 2.2rem; }
  .info-item { flex-direction: column; text-align: center; }
- .info-item i { margin-right: 0; margin-bottom: 10px; }
+ .info-item i { margin-right: 0; margin-bottom: 15px; }
  }
  </style>
 </head>
@@ -387,7 +380,7 @@
  <nav>
  <ul>
  <li><a href="#home">Ana Sayfa</a></li>
- <li><a href="#features">Özellikler</a></li>
+ <li><a href="#features">Hizmetlerimiz</a></li>
  <li><a href="#contact">İletişim</a></li>
  </ul>
  </nav>
@@ -395,71 +388,52 @@
 
  <!-- Hero Section -->
  <section id="home" class="hero">
- <h1>Cayzadem</h1>
- <p>Nargile dumanının eşlik ettiği, kahvenin aromasıyla harmanlanan ve maç heyecanını en büyük ekranlarda yaşadığınız, Erzurum'un en sıcak buluşma noktası.</p>
- <a href="#contact" class="cta-btn">Bize Ulaşın</a>
+ <h1>CAYZADEM</h1>
+ <p>Nargilenin keyfi, kahvenin aroması ve maçın heyecanı tek çatıda.<br>Erzurum'da unutulmaz anılar için doğru adres.</p>
+ <a href="#contact" class="cta-btn">Rezervasyon Yap</a>
  </section>
 
  <!-- Features Section -->
  <section id="features" class="features">
  <div class="section-title">
- <h2>Neler Sunuyoruz?</h2>
- <p>Her detayda konfor, lezzet, güvenlik ve unutulmaz anılar.</p>
+ <h2>Deneyiminiz</h2>
+ <p>Sadece bir mekan değil, bir yaşam tarzı.</p>
  </div>
  
  <div class="grid-container">
- <!-- Nargile Kartı (Nargile Resmi) -->
+ <!-- Nargile Kartı -->
  <div class="card">
  <div class="card-img-container">
- <!-- Nargile Görseli -->
  <img src="https://images.unsplash.com/photo-1542849828-6d5c5e6f4d48?q=80&w=800&auto=format&fit=crop" alt="Nargile Keyfi" class="card-img">
  </div>
  <div class="card-content">
  <i class="fas fa-wind card-icon"></i>
- <h3>Nargile Keyfi</h3>
- <p>Usta ellerle özenle hazırlanan, özel karışımlara sahip premium nargile çeşitlerimizle keyifli sohbetlerinizin tadını çıkarın. En taze yapraklar ve özel aromalarla her damak tadına hitap eden lezzetler.</p>
+ <h3>Premium Nargile</h3>
+ <p>Usta ellerde hazırlanan, özel karışımlı nargilelerimizle sohbetinizi lezzetlendirin.</p>
  </div>
  </div>
 
- <!-- Kahve/Çay Kartı (Çay Tabağı Görseli) -->
+ <!-- İçecekler Kartı -->
  <div class="card">
  <div class="card-img-container">
- <!-- Çay Tabağı Görseli -->
- <img src="https://images.unsplash.com/photo-1596711686378-9d8b3a3d4f4f?q=80&w=800&auto=format&fit=crop" alt="Sıcak Soğuk İçecekler" class="card-img">
+ <img src="https://images.unsplash.com/photo-1596711686378-9d8b3a3d4f4f?q=80&w=800&auto=format&fit=crop" alt="Çay ve Kahve" class="card-img">
  </div>
  <div class="card-content">
  <i class="fas fa-mug-hot card-icon"></i>
- <h3>Sıcak & Soğuk İçecekler</h3>
- <p>Taze demlenmiş, Erzurum usulü Türk çayı, kaliteli kahve çekirdeklerinden hazırlanan espresso, latte ve filtre kahvelerimizle başlayın gününüze. Yazın serinletici soğuk içecekler ve özel kokteyllerimizle ise ferahlığı yakalayın.</p>
+ <h3>Gurme İçecekler</h3>
+ <p>Taze demlenmiş Erzurum çayı, özel kahve çeşitleri ve serinletici soğuk içecekler.</p>
  </div>
  </div>
 
- <!-- Maç Kartı (Rezervasyon Uyarısı Eklendi) -->
+ <!-- Maç Kartı -->
  <div class="card">
  <div class="card-img-container">
- <!-- Maç/Futbol Görseli -->
  <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=800&auto=format&fit=crop" alt="Maç İzleme" class="card-img">
  </div>
  <div class="card-content">
  <i class="fas fa-tv card-icon"></i>
- <h3>Maç Keyfi</h3>
- <p>Büyük ekranlarda canlı maç yayınları ile arkadaşlarınızla birlikte gergin anıları yaşayın. Fenerbahçe, Galatasaray, Beşiktaş derbilerinden Avrupa kupalarına kadar tüm futbol şölenlerini yanınızda hissedin.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Rezervasyon için lütfen arayınız.</strong></p>
- </div>
- </div>
-
- <!-- GÜVENLİK KARTI (YENİ EKLENEN) -->
- <div class="card security-card">
- <div class="card-img-container">
- <!-- Güvenlik/Kamera Görseli -->
- <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800&auto=format&fit=crop" alt="Güvenlik Sistemi" class="card-img">
- <div class="live-badge">
- <i class="fas fa-circle"></i> CANLI
- </div>
- </div>
- <div class="card-content">
- <i class="fas fa-video card-icon"></i>
- <h3>7/24 Güvenlik Kamerası</h3>
- <p>Müşteri memnuniyeti ve güvenliğiniz bizim için önceliklidir. Mekanımızda bulunan gelişmiş güvenlik kameraları sistemi sayesinde <strong>7 gün 24 saat kesintisiz olarak</strong> tüm alanlar kayıt altında tutulmaktadır. Hem sizin güvenliğiniz hem de olası durumların şeffaf şekilde incelenmesi adına bu sistemi kullanmaktayız. Her an her yerden kontrol edilebilir, güvenli ortamda keyfinize bakın.</p>
+ <h3>Maç Heyecanı</h3>
+ <p>Büyük ekranlarda canlı yayın. Arkadaşlarınızla birlikte gergin anıları birlikte yaşayın.<br><strong style="color: var(--primary-color); margin-top: 10px; display: block;">Rezervasyon şart!</strong></p>
  </div>
  </div>
  </div>
@@ -468,22 +442,13 @@
  <!-- Info & Contact Section -->
  <section id="contact" class="info-section">
  <div class="info-box">
- <h3>İletişim & Konum</h3>
+ <h3>Bize Ulaşın</h3>
  
  <div class="info-item">
  <i class="fas fa-map-marker-alt"></i>
  <div class="info-text">
  <h4>Adresimiz</h4>
- <p>Erzurum / Palandöken / Yenişehir<br>Cayzadem Kahve<br>Sizi bekliyor, kahvemiz demleniyor.</p>
- </div>
- </div>
-
- <div class="info-item">
- <i class="fas fa-phone-alt"></i>
- <div class="info-text">
- <h4>İletişim</h4>
- <p style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-top: 5px;">Abdulkadir Bayrakdar</p>
- <p style="font-size: 0.95rem; color: #bbb;">Rezervasyon ve bilgi için bize ulaşın.</p>
+ <p>Erzurum / Palandöken / Yenişehir<br>Cayzadem Kahve</p>
  </div>
  </div>
 
@@ -494,13 +459,21 @@
  <p>Her gün: 08:00 – 01:00<br>Sabahın ilk deminden gece yarısına kadar hizmetinizdeyiz.</p>
  </div>
  </div>
+
+ <div class="info-item">
+ <i class="fas fa-phone-alt"></i>
+ <div class="info-text">
+ <h4>Rezervasyon & Bilgi</h4>
+ <p style="margin-bottom: 5px;">Masanızı hemen ayırtın:</p>
+ <a href="tel:+905336227020" class="phone-link">0 (533) 622 70 20</a>
+ </div>
+ </div>
  </div>
  </section>
 
  <!-- Footer -->
  <footer>
- <p>&copy; 2026 <span>Cayzadem</span>. Tüm hakları saklıdır. | Erzurum'un Sıcak Mekanı</p>
- <p style="margin-top: 10px; font-size: 0.85rem; color: #555;">Mekanımız 7/24 güvenlik kamerası ile izlenmektedir.</p>
+ <p>&copy; 2026 <span>Cayzadem</span>. Tüm hakları saklıdır. | Erzurum'un En Sıcak Mekanı</p>
  </footer>
 
  <script>
